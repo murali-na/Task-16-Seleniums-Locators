@@ -1,0 +1,36 @@
+1. Write a Selenium script that opens the Firefox browser, maximizes the browser window, navigates to "http://google.com", prints the URL of the current page, reloads the page, and closes the browser.
+
+WebDriver driver = new FirefoxDriver();
+driver.manage().window().maximize();
+driver.get("https://www.google.com/");
+driver.close();
+
+2. Write a Selenium script that opens the Chrome browser, navigates to
+"https://www.demoblaze.com/", maximizes the browser window, verifies if the title of the page is "STORE", and prints "Page landed on correct website" if the title matches, else prints "Page not landed on correct website"
+
+WebDriver driver = new ChromeDriver();
+driver.manage().window().maximize();
+driver.get("https://www.demoblaze.com/");
+// System.out.println(driver.getTitle());
+String expectedtitile = "STORE";
+String actualtitile = driver.getTitle();
+
+if (expectedtitile.equals(actualtitile)) {
+System.out.println("Page landed on correct website");
+} else {
+System.out.println("Page not; landed on correct website");
+		}
+
+
+3. Write a Selenium script that opens the chrome browser, navigates to
+"https://www.wikipedia.org/", maximizes the browser window, searches for the query
+"Artificial Intelligence", clicks on the "History" section in the search results, and prints the title of the section.
+
+WebDriver driver = new ChromeDriver();
+driver.manage().window().maximize();
+driver.get("https://www.wikipedia.org/");
+driver.findElement(By.id("searchInput")).sendKeys("Artificial intelligence");
+driver.findElement(By.xpath("//button[@type='submit']")).click();
+Thread.sleep(3000);
+driver.findElement(By.xpath("//span[normalize-space()='History']")).click();
+driver.close();
